@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Основной цвет (окно кода, настройки) -->
+    <color name="main">#EDE4D0</color>
+    <!-- Сглаживающий / акцент рядом с основным -->
+    <color name="soft">#ECB1B3</color>
+    <!-- Второй основной, акцентный -->
+    <color name="accent">#9F5165</color>
+    <!-- Верхний таб, значки и остальные элементы -->
+    <color name="primary">#3C6970</color>
+
+    <color name="tab_text">#EDE4D0</color>
+    <color name="tab_text_inactive">#B8EDE4D0</color>
+
+    <color name="code_text">#3A3632</color>
+    <color name="muted">#6E675E</color>
+
+    <color name="launcher_background">#3C6970</color>
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/editorView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    android:orientation="vertical">
+
+    <!-- Панель действий редактора -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/soft"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/btnNew"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_new"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_note_add"
+            app:tint="@color/primary" />
+
+        <ImageButton
+            android:id="@+id/btnSave"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_save"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_save"
+            app:tint="@color/primary" />
+
+        <ImageButton
+            android:id="@+id/btnSaveAs"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/action_save_as"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_save_alt"
+            app:tint="@color/primary" />
+
+        <TextView
+            android:id="@+id/editorFileName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:gravity="end"
+            android:maxLines="1"
+            android:paddingStart="8dp"
+            android:text="@string/editor_file_none"
+            android:textColor="@color/primary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Окно ввода кода -->
+    <HorizontalScrollView
+        android:id="@+id/codeScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lineNumbers"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/soft"
+                android:fontFamily="monospace"
+                android:gravity="top|end"
+                android:lineSpacingExtra="2dp"
+                android:minWidth="40dp"
+                android:paddingStart="8dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/accent"
+                android:textSize="14sp"
+                android:typeface="monospace" />
+
+            <EditText
+                android:id="@+id/codeInput"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_code"
+                android:fontFamily="monospace"
+                android:gravity="top|start"
+                android:imeOptions="actionNone"
+                android:inputType="textMultiLine|textNoSuggestions"
+                android:lineSpacingExtra="2dp"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:textColor="@color/code_text"
+                android:textColorHighlight="@color/soft"
+                android:textCursorDrawable="@drawable/cursor"
+                android:textSize="14sp"
+                android:typeface="monospace" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>
