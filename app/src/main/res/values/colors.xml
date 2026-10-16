@@ -2,10 +2,10 @@
 <resources>
     <!-- Основной цвет (окно кода, настройки) -->
     <color name="main">#EDE4D0</color>
-    <!-- Сглаживающий / акцент рядом с основным -->
-    <color name="soft">#ECB1B3</color>
-    <!-- Второй основной, акцентный -->
-    <color name="accent">#9F5165</color>
+    <!-- Сглаживающий / панели (бледно-голубой) -->
+    <color name="soft">#D6E5E9</color>
+    <!-- Второй основной, акцентный (голубой) -->
+    <color name="accent">#3E8FA6</color>
     <!-- Верхний таб, значки и остальные элементы -->
     <color name="primary">#3C6970</color>
 
@@ -14,6 +14,19 @@
 
     <color name="code_text">#3A3632</color>
     <color name="muted">#6E675E</color>
+
+    <!-- Временная подсветка поиска (голубая, 1 сек) -->
+    <color name="search_highlight">#7FD1EC</color>
+
+    <!-- Подсветка синтаксиса -->
+    <color name="hl_tag">#3C6970</color>
+    <color name="hl_attr">#3E8FA6</color>
+    <color name="hl_string">#2F5B62</color>
+    <color name="hl_comment">#8F857A</color>
+
+    <!-- Вкладки файлов -->
+    <color name="chip_text_active">#EDE4D0</color>
+    <color name="chip_text_inactive">#3C6970</color>
 
     <color name="launcher_background">#3C6970</color>
 </resources>

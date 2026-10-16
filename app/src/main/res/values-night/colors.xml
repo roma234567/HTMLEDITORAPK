@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Тёмная тема -->
+    <color name="main">#1E2528</color>
+    <color name="soft">#2A3A40</color>
+    <color name="accent">#5FB4CB</color>
+    <color name="primary">#3C6970</color>
+
+    <color name="tab_text">#EDE4D0</color>
+    <color name="tab_text_inactive">#B8EDE4D0</color>
+
+    <color name="code_text">#E4E0D7</color>
+    <color name="muted">#95A1A3</color>
+
+    <color name="search_highlight">#2F7590</color>
+
+    <color name="hl_tag">#7FC2D1</color>
+    <color name="hl_attr">#5FB4CB</color>
+    <color name="hl_string">#A7C4CC</color>
+    <color name="hl_comment">#8A9698</color>
+
+    <color name="chip_text_active">#1E2528</color>
+    <color name="chip_text_inactive">#EDE4D0</color>
+</resources>

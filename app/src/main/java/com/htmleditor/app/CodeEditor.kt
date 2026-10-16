@@ -6,11 +6,22 @@ import android.widget.EditText
 import android.widget.TextView
 
 /**
- * Редактор кода: подсветка синтаксиса, номера строк и синхронная прокрутка.
+ * Редактор кода: подсветка синтаксиса, номера строк, синхронная прокрутка.
  */
-class CodeEditor(private val input: EditText, private val gutter: TextView) {
+class CodeEditor(
+    private val input: EditText,
+    private val gutter: TextView,
+    private val onText: ((String) -> Unit)? = null
+) {
 
     private var lastLineCount = -1
+
+    private val colors = HtmlHighlighter.Colors(
+        tag = input.context.getColor(R.color.hl_tag),
+        attr = input.context.getColor(R.color.hl_attr),
+        string = input.context.getColor(R.color.hl_string),
+        comment = input.context.getColor(R.color.hl_comment)
+    )
 
     init {
         input.addTextChangedListener(object : TextWatcher {
@@ -32,7 +43,8 @@ class CodeEditor(private val input: EditText, private val gutter: TextView) {
 
     private fun refresh(s: Editable) {
         updateGutter(s)
-        HtmlHighlighter.apply(s)
+        HtmlHighlighter.apply(s, colors)
+        onText?.invoke(s.toString())
     }
 
     private fun updateGutter(s: Editable) {
@@ -60,5 +72,17 @@ class CodeEditor(private val input: EditText, private val gutter: TextView) {
         input.setSelection(0)
         input.scrollTo(0, 0)
         gutter.scrollTo(0, 0)
+    }
+
+    /** Прокрутка к указанному символу (для поиска). */
+    fun scrollToOffset(offset: Int) {
+        val layout = input.layout ?: return
+        val line = layout.getLineForOffset(offset)
+        val y = layout.getLineTop(line)
+        val target = (y - input.height / 3).coerceAtLeast(0)
+        input.post {
+            input.scrollTo(input.scrollX, target)
+            gutter.scrollTo(0, target)
+        }
     }
 }

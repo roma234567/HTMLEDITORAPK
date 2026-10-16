@@ -13,6 +13,8 @@
     <string name="action_refresh">Обновить предпросмотр</string>
     <string name="action_settings">Настройки</string>
     <string name="action_close">Закрыть</string>
+    <string name="action_search">Поиск</string>
+    <string name="close_tab">Закрыть вкладку</string>
 
     <string name="no_file">Файл не открыт</string>
     <string name="file_label">Текущий файл</string>
@@ -23,6 +25,10 @@
     <string name="browse_subtitle">Выберите HTML- или текстовый файл с устройства</string>
     <string name="browse_choose">Выбрать файл</string>
 
+    <string name="theme_label">Тема</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+
     <string name="mode_label">Режим</string>
     <string name="mode_phone">Телефон</string>
     <string name="mode_pc">ПК</string>
@@ -31,12 +37,11 @@
     <string name="zoom_out">Уменьшить размер страницы</string>
     <string name="zoom_in">Увеличить размер страницы</string>
 
-    <string name="editor_file_none">Без имени</string>
+    <string name="search_hint">Поиск в коде…</string>
+    <string name="search_next">Следующее совпадение</string>
+    <string name="toast_not_found">Не найдено</string>
 
-    <string name="dialog_unsaved_title">Несохранённые изменения</string>
-    <string name="dialog_unsaved_message">В текущем тексте есть несохранённые правки. Продолжить?</string>
-    <string name="dialog_continue">Продолжить</string>
-    <string name="dialog_cancel">Отмена</string>
+    <string name="editor_file_none">Без имени</string>
 
     <string name="toast_saved">Файл сохранён</string>
     <string name="toast_save_error">Не удалось сохранить файл</string>
