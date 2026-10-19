@@ -1201,8 +1201,8 @@ class PyInterpreter(private val host: ExecHost) {
             "setposition" to biN("setposition") {
                 turtle.goto(argNum(it, 0, "setposition"), argNum(it, 1, "setposition"))
             },
-            "setheading" to biN("setheading") { turtle.setHeading(argNum(it, 0, "setheading")) },
-            "seth" to biN("seth") { turtle.setHeading(argNum(it, 0, "seth")) },
+            "setheading" to biN("setheading") { turtle.headingTo(argNum(it, 0, "setheading")) },
+            "seth" to biN("seth") { turtle.headingTo(argNum(it, 0, "seth")) },
             "penup" to biN("penup") { turtle.penDown = false },
             "pu" to biN("pu") { turtle.penDown = false },
             "up" to biN("up") { turtle.penDown = false },
@@ -1226,7 +1226,7 @@ class PyInterpreter(private val host: ExecHost) {
             },
             "home" to biN("home") {
                 turtle.goto(0.0, 0.0)
-                turtle.setHeading(0.0)
+                turtle.headingTo(0.0)
             },
             "clear" to biN("clear") { turtle.clear() },
             "reset" to biN("reset") { turtle.reset() },
@@ -1349,7 +1349,7 @@ class PyInterpreter(private val host: ExecHost) {
             emit()
         }
 
-        fun setHeading(h: Double) {
+        fun headingTo(h: Double) {
             heading = ((h % 360.0) + 360.0) % 360.0
             emit()
         }
