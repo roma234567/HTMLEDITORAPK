@@ -9,6 +9,7 @@
     android:padding="24dp">
 
     <ImageView
+        android:id="@+id/browseIcon"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:importantForAccessibility="no"
@@ -16,6 +17,7 @@
         android:tint="@color/primary" />
 
     <TextView
+        android:id="@+id/browseTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -51,6 +53,7 @@
         android:textSize="15sp" />
 
     <LinearLayout
+        android:id="@+id/browseCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -59,6 +62,7 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/browseFileCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/file_label"

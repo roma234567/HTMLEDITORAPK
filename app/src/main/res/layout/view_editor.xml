@@ -29,6 +29,7 @@
 
     <!-- Панель действий редактора -->
     <LinearLayout
+        android:id="@+id/editorToolbar"
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@color/soft"

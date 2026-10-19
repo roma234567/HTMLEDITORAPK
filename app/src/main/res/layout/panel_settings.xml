@@ -14,7 +14,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:paddingEnd="6dp"
         android:paddingBottom="2dp">
 
@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/bg_seg_selected"
-            android:paddingStart="14dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
             android:text="@string/theme_light"
             android:textColor="@color/main"
             android:textSize="13sp" />
@@ -43,12 +43,12 @@
             android:id="@+id/btnThemeDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/bg_seg_normal"
-            android:paddingStart="14dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
             android:text="@string/theme_dark"
             android:textColor="@color/primary"
             android:textSize="13sp" />
@@ -70,14 +70,149 @@
             app:tint="@color/primary" />
     </LinearLayout>
 
-    <!-- Режим предпросмотра -->
+    <!-- Цвета (схемы) -->
     <LinearLayout
+        android:id="@+id/rowPalette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="4dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/palette_label"
+            android:textColor="@color/primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/swClassic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="9dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="6dp"
+            android:text="@string/scheme_classic"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/swBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="9dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="6dp"
+            android:text="@string/scheme_blue"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/swGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="9dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="6dp"
+            android:text="@string/scheme_green"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/swWarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="9dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="9dp"
+            android:paddingBottom="6dp"
+            android:text="@string/scheme_warm"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Язык -->
+    <LinearLayout
+        android:id="@+id/rowLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang_label"
+            android:textColor="@color/primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btnLangAuto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_seg_selected"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
+            android:text="@string/lang_auto"
+            android:textColor="@color/main"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btnLangHtml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
+            android:text="@string/lang_html"
+            android:textColor="@color/primary"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/btnLangPython"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_seg_normal"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
+            android:text="@string/lang_python"
+            android:textColor="@color/primary"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Режим предпросмотра (только HTML) -->
+    <LinearLayout
+        android:id="@+id/rowMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="2dp"
         android:paddingEnd="12dp"
         android:paddingBottom="2dp">
 
@@ -94,10 +229,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/bg_seg_selected"
-            android:paddingStart="14dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
             android:text="@string/mode_phone"
             android:textColor="@color/main"
             android:textSize="13sp" />
@@ -106,27 +241,28 @@
             android:id="@+id/btnModePc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="6dp"
             android:background="@drawable/bg_seg_normal"
-            android:paddingStart="14dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="8dp"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="6dp"
             android:text="@string/mode_pc"
             android:textColor="@color/primary"
             android:textSize="13sp" />
     </LinearLayout>
 
-    <!-- Размер страницы -->
+    <!-- Размер страницы (только HTML) -->
     <LinearLayout
+        android:id="@+id/rowZoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="4dp"
+        android:paddingTop="2dp"
         android:paddingEnd="12dp"
-        android:paddingBottom="12dp">
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -137,19 +273,19 @@
 
         <ImageButton
             android:id="@+id/btnZoomOut"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/bg_icon_btn"
             android:contentDescription="@string/zoom_out"
-            android:padding="8dp"
+            android:padding="7dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_remove"
             app:tint="@color/primary" />
 
         <TextView
             android:id="@+id/zoomLabel"
-            android:layout_width="56dp"
+            android:layout_width="54dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/zoom_format"
@@ -159,11 +295,11 @@
 
         <ImageButton
             android:id="@+id/btnZoomIn"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
             android:background="@drawable/bg_icon_btn"
             android:contentDescription="@string/zoom_in"
-            android:padding="8dp"
+            android:padding="7dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_add"
             app:tint="@color/primary" />

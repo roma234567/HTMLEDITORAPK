@@ -37,6 +37,28 @@
     <string name="zoom_out">Уменьшить размер страницы</string>
     <string name="zoom_in">Увеличить размер страницы</string>
 
+    <string name="palette_label">Цвета</string>
+    <string name="scheme_classic">Класс</string>
+    <string name="scheme_blue">Синяя</string>
+    <string name="scheme_green">Зелёная</string>
+    <string name="scheme_warm">Тёплая</string>
+
+    <string name="lang_label">Язык</string>
+    <string name="lang_auto">Авто</string>
+    <string name="lang_html">HTML</string>
+    <string name="lang_python">Python</string>
+
+    <string name="stop_run">Остановить выполнение</string>
+    <string name="console_input_hint">Введите значение…</string>
+    <string name="console_send">Отправить</string>
+    <string name="result_title_html">Result</string>
+    <string name="result_title_py">Result · Python</string>
+    <string name="py_error_line">Строка %1$d: %2$s</string>
+
+    <string name="py_started">— запуск —</string>
+    <string name="py_done">— выполнено —</string>
+    <string name="py_stopped">— остановлено —</string>
+
     <string name="search_hint">Поиск в коде…</string>
     <string name="search_next">Следующее совпадение</string>
     <string name="toast_not_found">Не найдено</string>

@@ -4,10 +4,11 @@
     android:id="@+id/resultView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/main"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/resultToolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/soft"
@@ -17,6 +18,7 @@
         android:paddingEnd="4dp">
 
         <TextView
+            android:id="@+id/resultTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -35,12 +37,113 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_refresh"
             app:tint="@color/primary" />
+
+        <ImageButton
+            android:id="@+id/btnStopRun"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/stop_run"
+            android:padding="7dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            app:tint="@color/primary" />
     </LinearLayout>
 
+    <!-- HTML-предпросмотр -->
     <WebView
         android:id="@+id/previewWeb"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FFFFFF" />
+
+    <!-- Python: GUI (turtle) + консоль -->
+    <LinearLayout
+        android:id="@+id/pythonPane"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <com.htmleditor.app.TurtleView
+            android:id="@+id/turtleView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/main"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/consoleScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/main"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/consoleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:lineSpacingExtra="2dp"
+                    android:padding="10dp"
+                    android:textColor="@color/code_text"
+                    android:textColorHighlight="@color/soft"
+                    android:textIsSelectable="false"
+                    android:textSize="13sp"
+                    android:typeface="monospace" />
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/inputRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/soft"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/consoleInput"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_search_input"
+                    android:hint="@string/console_input_hint"
+                    android:imeOptions="actionSend"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/code_text"
+                    android:textColorHint="@color/muted"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/btnSendInput"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/console_send"
+                    android:padding="9dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_send"
+                    app:tint="@color/primary" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

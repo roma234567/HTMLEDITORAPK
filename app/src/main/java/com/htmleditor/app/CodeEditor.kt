@@ -16,12 +16,18 @@ class CodeEditor(
 
     private var lastLineCount = -1
 
-    private val colors = HtmlHighlighter.Colors(
+    private var colors = HtmlHighlighter.Colors(
         tag = input.context.getColor(R.color.hl_tag),
         attr = input.context.getColor(R.color.hl_attr),
         string = input.context.getColor(R.color.hl_string),
         comment = input.context.getColor(R.color.hl_comment)
     )
+
+    /** Обновление цветов подсветки (смена цветовой схемы). */
+    fun updateColors(c: HtmlHighlighter.Colors) {
+        colors = c
+        input.text?.let { refresh(it) }
+    }
 
     init {
         input.addTextChangedListener(object : TextWatcher {
