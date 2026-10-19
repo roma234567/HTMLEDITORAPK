@@ -49,13 +49,8 @@ class Prefs(context: Context) {
 
     /** Цветовая схема: classic / blue / green / warm. */
     var scheme: String
-        get() = sp.getString(KEY_SCHEME, PaletteNs.CLASSIC) ?: PaletteNs.CLASSIC
+        get() = sp.getString(KEY_SCHEME, PaletteNs.WARM) ?: PaletteNs.WARM
         set(value) = sp.edit().putString(KEY_SCHEME, value).apply()
-
-    /** Язык Result: auto / html / python. */
-    var langOverride: String
-        get() = sp.getString(KEY_LANG, LANG_AUTO) ?: LANG_AUTO
-        set(value) = sp.edit().putString(KEY_LANG, value).apply()
 
     companion object {
         const val MODE_PHONE = "phone"
@@ -77,6 +72,5 @@ class Prefs(context: Context) {
         private const val KEY_ZOOM = "preview_zoom"
         private const val KEY_TAB = "tab_index"
         private const val KEY_SCHEME = "color_scheme"
-        private const val KEY_LANG = "lang_override"
     }
 }

@@ -229,7 +229,8 @@ class MainActivity : AppCompatActivity() {
                             uri = if (uriStr.isEmpty()) null else Uri.parse(uriStr),
                             name = if (nameStr.isEmpty()) null else nameStr,
                             content = o.optString("content", ""),
-                            saved = o.optString("saved", "")
+                            saved = o.optString("saved", ""),
+                            lang = o.optString("lang", Prefs.LANG_AUTO)
                         )
                     )
                 }
@@ -527,8 +528,47 @@ class MainActivity : AppCompatActivity() {
         }
         FileStore.persistPermissions(this, uri)
         val name = FileStore.displayName(this, uri) ?: uri.lastPathSegment
+        val existed = openTabs.indexOfFirst { it.uri == uri } >= 0
         addOrActivateTab(uri, name, text)
+        if (!existed && !hasKnownLangExtension(name)) {
+            askLanguageForFile()
+        }
         selectTab(TAB_EDITOR)
+    }
+
+    /** Расширения, по которым язык определяется однозначно. */
+    private fun hasKnownLangExtension(name: String?): Boolean {
+        val n = name?.lowercase() ?: return false
+        return n.endsWith(".py") || n.endsWith(".pyw") ||
+            n.endsWith(".html") || n.endsWith(".htm") ||
+            n.endsWith(".xhtml") || n.endsWith(".svg")
+    }
+
+    /**
+     * Файл без понятного расширения — спрашиваем язык (HTML/Python/Авто).
+     * Выбор сохраняется в вкладке и больше не спрашивается для этого файла.
+     */
+    private fun askLanguageForFile() {
+        val items = arrayOf(
+            getString(R.string.lang_html),
+            getString(R.string.lang_python),
+            getString(R.string.lang_auto)
+        )
+        val values = arrayOf(Prefs.LANG_HTML, Prefs.LANG_PYTHON, Prefs.LANG_AUTO)
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(R.string.lang_dialog_title)
+            .setMessage(R.string.lang_dialog_message)
+            .setItems(items) { _, which ->
+                activeFile().lang = values[which]
+                lastPreviewed = ""
+                persistAll()
+                if (currentTab == TAB_RESULT) {
+                    updateResultPane()
+                    updatePreview(force = false)
+                }
+            }
+            .setCancelable(true)
+            .show()
     }
 
     private fun updateBrowseInfo() {
@@ -573,9 +613,11 @@ class MainActivity : AppCompatActivity() {
     // ------------------------------------------------------------- Python/Result
 
     private fun resolvePython(): Boolean {
-        when (prefs.langOverride) {
-            Prefs.LANG_PYTHON -> return true
-            Prefs.LANG_HTML -> return false
+        if (openTabs.isNotEmpty()) {
+            when (activeFile().lang) {
+                Prefs.LANG_PYTHON -> return true
+                Prefs.LANG_HTML -> return false
+            }
         }
         val name = if (openTabs.isNotEmpty()) activeFile().name else null
         return LanguageDetector.isPython(name, editor.getText())
@@ -740,10 +782,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.swGreen).setOnClickListener { setScheme(PaletteNs.GREEN) }
         findViewById<TextView>(R.id.swWarm).setOnClickListener { setScheme(PaletteNs.WARM) }
 
-        findViewById<TextView>(R.id.btnLangAuto).setOnClickListener { setLangOverride(Prefs.LANG_AUTO) }
-        findViewById<TextView>(R.id.btnLangHtml).setOnClickListener { setLangOverride(Prefs.LANG_HTML) }
-        findViewById<TextView>(R.id.btnLangPython).setOnClickListener { setLangOverride(Prefs.LANG_PYTHON) }
-
         findViewById<View>(R.id.btnZoomOut).setOnClickListener {
             setZoom(preview.zoom - ZOOM_STEP)
         }
@@ -772,17 +810,6 @@ class MainActivity : AppCompatActivity() {
         if (prefs.scheme == id) return
         prefs.scheme = id
         applyPalette()
-    }
-
-    private fun setLangOverride(value: String) {
-        if (prefs.langOverride == value) return
-        prefs.langOverride = value
-        updateLangButtons()
-        lastPreviewed = ""
-        if (currentTab == TAB_RESULT) {
-            updateResultPane()
-            updatePreview(force = false)
-        }
     }
 
     private fun setMode(mode: String) {
@@ -829,13 +856,6 @@ class MainActivity : AppCompatActivity() {
     private fun updateThemeButtons() {
         setSeg(btnThemeLight, prefs.themeMode == Prefs.THEME_LIGHT)
         setSeg(btnThemeDark, prefs.themeMode == Prefs.THEME_DARK)
-    }
-
-    private fun updateLangButtons() {
-        val cur = prefs.langOverride
-        setSeg(findViewById(R.id.btnLangAuto), cur == Prefs.LANG_AUTO)
-        setSeg(findViewById(R.id.btnLangHtml), cur == Prefs.LANG_HTML)
-        setSeg(findViewById(R.id.btnLangPython), cur == Prefs.LANG_PYTHON)
     }
 
     private fun updateSwatches() {
@@ -944,7 +964,6 @@ class MainActivity : AppCompatActivity() {
         // настройки: сегменты, свотчи, подписи
         updateThemeButtons()
         updateModeButtons()
-        updateLangButtons()
         updateSwatches()
         zoomLabel.setTextColor(ensureContrast(pal.accent, pal.main, 3.2))
         recolorSettingsLabels(settingsPanel)
@@ -1015,6 +1034,7 @@ class MainActivity : AppCompatActivity() {
             o.put("name", tab.name ?: "")
             o.put("content", tab.content)
             o.put("saved", tab.saved)
+            o.put("lang", tab.lang)
             arr.put(o)
         }
         prefs.tabsJson = arr.toString()

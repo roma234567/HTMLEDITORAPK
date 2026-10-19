@@ -142,68 +142,6 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <!-- Язык -->
-    <LinearLayout
-        android:id="@+id/rowLanguage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingTop="2dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="2dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lang_label"
-            android:textColor="@color/primary"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/btnLangAuto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/bg_seg_selected"
-            android:paddingStart="12dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="6dp"
-            android:text="@string/lang_auto"
-            android:textColor="@color/main"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/btnLangHtml"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_seg_normal"
-            android:paddingStart="12dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="6dp"
-            android:text="@string/lang_html"
-            android:textColor="@color/primary"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/btnLangPython"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_seg_normal"
-            android:paddingStart="12dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="6dp"
-            android:text="@string/lang_python"
-            android:textColor="@color/primary"
-            android:textSize="13sp" />
-    </LinearLayout>
-
     <!-- Режим предпросмотра (только HTML) -->
     <LinearLayout
         android:id="@+id/rowMode"

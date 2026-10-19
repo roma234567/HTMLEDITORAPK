@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Основной цвет (окно кода, настройки) -->
-    <color name="main">#EDE4D0</color>
-    <!-- Сглаживающий / панели (бледно-голубой) -->
-    <color name="soft">#D6E5E9</color>
-    <!-- Второй основной, акцентный (голубой) -->
-    <color name="accent">#3E8FA6</color>
-    <!-- Верхний таб, значки и остальные элементы -->
-    <color name="primary">#3C6970</color>
+    <!-- Тёплая схема (по умолчанию): фон / панель / акцент / табы -->
+    <color name="main">#F5EDE3</color>
+    <color name="soft">#E8D9C5</color>
+    <color name="accent">#E8B4B8</color>
+    <color name="primary">#C9C0DC</color>
 
-    <color name="tab_text">#EDE4D0</color>
-    <color name="tab_text_inactive">#B8EDE4D0</color>
+    <color name="tab_text">#141A1C</color>
+    <color name="tab_text_inactive">#B8141A1C</color>
 
-    <color name="code_text">#3A3632</color>
-    <color name="muted">#6E675E</color>
+    <color name="code_text">#343332</color>
+    <color name="muted">#94908A</color>
 
-    <!-- Временная подсветка поиска (голубая, 1 сек) -->
-    <color name="search_highlight">#7FD1EC</color>
+    <color name="search_highlight">#F2D5D7</color>
 
-    <!-- Подсветка синтаксиса -->
-    <color name="hl_tag">#3C6970</color>
-    <color name="hl_attr">#3E8FA6</color>
-    <color name="hl_string">#2F5B62</color>
-    <color name="hl_comment">#8F857A</color>
+    <color name="hl_tag">#666371</color>
+    <color name="hl_attr">#7A6266</color>
+    <color name="hl_string">#574A4C</color>
+    <color name="hl_comment">#827E7B</color>
 
     <!-- Вкладки файлов -->
-    <color name="chip_text_active">#EDE4D0</color>
-    <color name="chip_text_inactive">#3C6970</color>
+    <color name="chip_text_active">#141A1C</color>
+    <color name="chip_text_inactive">#8F7276</color>
 
-    <color name="launcher_background">#3C6970</color>
+    <color name="launcher_background">#C9C0DC</color>
 </resources>

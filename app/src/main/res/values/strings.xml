@@ -51,6 +51,9 @@
     <string name="stop_run">Остановить выполнение</string>
     <string name="console_input_hint">Введите значение…</string>
     <string name="console_send">Отправить</string>
+    <string name="lang_dialog_title">Язык файла</string>
+    <string name="lang_dialog_message">Расширение не помогает определить язык. Что показывать в Result?</string>
+
     <string name="result_title_html">Result</string>
     <string name="result_title_py">Result · Python</string>
     <string name="py_error_line">Строка %1$d: %2$s</string>
