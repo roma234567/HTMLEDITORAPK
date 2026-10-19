@@ -7,6 +7,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   build:
     name: Сборка debug APK
@@ -38,6 +42,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set +e
           {
             echo "### Ошибка сборки — \`${{ github.sha }}\` ($(date -u +%FT%TZ))"
             echo '```'
@@ -46,6 +51,7 @@ jobs:
             tail -n 40 build.log
             echo '```'
           } > body.md
+          echo "body.md bytes: $(wc -c < body.md)"
           gh issue comment 1 --repo "${{ github.repository }}" --body-file body.md
 
       - name: Upload APK artifact
