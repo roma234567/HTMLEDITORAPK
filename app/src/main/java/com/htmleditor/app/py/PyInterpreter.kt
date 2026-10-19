@@ -529,11 +529,12 @@ class PyInterpreter(private val host: ExecHost) {
         }
         is PyRange -> {
             val x = asLong(item)
-            if (x == null) false else {
-                val (lo, hi) = if (container.step > 0)
-                    container.start until container.stop
-                else (container.stop + 1)..container.start
-                x in lo..hi
+            if (x == null) {
+                false
+            } else if (container.step > 0) {
+                x >= container.start && x < container.stop
+            } else {
+                x <= container.start && x > container.stop
             }
         }
         else -> err("объект типа '${pyTypeName(container)}' не поддерживает 'in'", line)
@@ -693,7 +694,7 @@ class PyInterpreter(private val host: ExecHost) {
                             PyList(obj.v.split(Regex("\\s+")).filter { it.isNotEmpty() }.mapTo(ArrayList()) { PyStr(it) })
                         sep is PyStr -> {
                             if (sep.v.isEmpty()) {
-                                PyList(obj.v.map { PyStr(it.toString()) })
+                                PyList(obj.v.mapTo(ArrayList<PyVal>()) { PyStr(it.toString()) })
                             } else {
                                 PyList(obj.v.split(sep.v).mapTo(ArrayList()) { PyStr(it) })
                             }
@@ -882,7 +883,8 @@ class PyInterpreter(private val host: ExecHost) {
                 is PyFloat -> PyInt(v.v.toLong())
                 is PyStr -> {
                     val t = v.v.trim()
-                    t.toLongOrNull() ?: err("не удалось преобразовать '${v.v}' в число")
+                    val parsed = t.toLongOrNull() ?: err("не удалось преобразовать '${v.v}' в число")
+                    PyInt(parsed)
                 }
                 else -> err("нельзя преобразовать '${pyTypeName(v)}' в int")
             }
@@ -894,7 +896,11 @@ class PyInterpreter(private val host: ExecHost) {
                 is PyInt -> PyFloat(v.v.toDouble())
                 is PyFloat -> v
                 is PyBool -> PyFloat(if (v.v) 1.0 else 0.0)
-                is PyStr -> v.v.trim().toDoubleOrNull() ?: err("не удалось преобразовать '${v.v}' в число")
+                is PyStr -> {
+                    val parsed = v.v.trim().toDoubleOrNull()
+                        ?: err("не удалось преобразовать '${v.v}' в число")
+                    PyFloat(parsed)
+                }
                 else -> err("нельзя преобразовать '${pyTypeName(v)}' в float")
             }
         }
@@ -948,7 +954,7 @@ class PyInterpreter(private val host: ExecHost) {
             when (v) {
                 is PyList -> PyList(ArrayList(v.items))
                 is PyTuple -> PyList(ArrayList(v.items))
-                is PyStr -> PyList(v.v.map { PyStr(it.toString()) })
+                is PyStr -> PyList(v.v.mapTo(ArrayList<PyVal>()) { PyStr(it.toString()) })
                 is PyRange -> PyList(iterSeq(v, currentLine).toMutableList())
                 is PyDict -> PyList(v.entries.keys.mapTo(ArrayList()) {
                     when (it) {

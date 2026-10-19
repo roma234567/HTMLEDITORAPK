@@ -183,8 +183,8 @@ class PyParser(private val tokens: List<Token>, private val lineShift: Int = 0) 
             atKw("from") -> parseFromImport(l)
             atKw("lambda") -> err("лямбда-функции не поддерживаются")
             atKw("class") -> err("классы не поддерживаются")
-            atKw("try"), atKw("with"), atKw("yield"), atKw("global"),
-            atKw("assert"), atKw("del"), atKw("raise"), atKw("async") ->
+            atKw("try") || atKw("with") || atKw("yield") || atKw("global") ||
+                atKw("assert") || atKw("del") || atKw("raise") || atKw("async") ->
                 err("инструкция «${peek().value}» пока не поддерживается")
             else -> parseExprOrAssign(l)
         }
