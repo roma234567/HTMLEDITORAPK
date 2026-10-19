@@ -29,7 +29,24 @@ jobs:
           packages: platforms;android-36
 
       - name: Build debug APK
-        run: ./gradlew --no-daemon assembleDebug
+        run: |
+          set -o pipefail
+          ./gradlew --no-daemon assembleDebug 2>&1 | tee build.log
+
+      - name: Publish build errors to issue #1
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "### Ошибка сборки — \`${{ github.sha }}\` ($(date -u +%FT%TZ))"
+            echo '```'
+            grep -E "^e: |error:|What went wrong|Execution failed|Caused by|FAILED" build.log | head -100
+            echo '--- tail ---'
+            tail -n 40 build.log
+            echo '```'
+          } > body.md
+          gh issue comment 1 --repo "${{ github.repository }}" --body-file body.md
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v7
