@@ -49,7 +49,10 @@ abstract class BaseSheet(
                 w.attributes.dimAmount = 0.45f
             }
         }
-        sheetView = d.findViewById(layoutId)
+        // корень листа: child контент-холста, т.к. у корневой LinearLayout нет android:id
+        // (findViewById(R.layout.x) вернул бы null и setup() не сработал бы)
+        val content = d.findViewById<android.view.ViewGroup>(android.R.id.content)
+        sheetView = content?.getChildAt(0)
         d.setOnDismissListener {
             onDismiss()
             sheetView = null
