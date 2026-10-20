@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Html Editor"
 include(":app")
+include(":browser")

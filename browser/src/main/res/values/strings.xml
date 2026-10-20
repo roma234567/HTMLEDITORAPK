@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Glass Browser</string>
+
+    <!-- Навигация -->
+    <string name="omnibox_hint">URL или запрос</string>
+    <string name="btn_go">Перейти</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_forward">Вперёд</string>
+    <string name="btn_reload">Обновить</string>
+    <string name="btn_menu">Меню</string>
+    <string name="mode_phone">Мобильный вид</string>
+    <string name="mode_desktop">Вид ПК</string>
+    <string name="toast_mode_desktop">Режим ПК: десктопный User-Agent</string>
+    <string name="toast_mode_phone">Мобильный режим</string>
+    <string name="home_url">data:text/html;charset=utf-8,%3Chtml%3E%3C/body%3E%3C/html%3E</string>
+
+    <!-- Меню -->
+    <string name="menu_title">Меню</string>
+    <string name="menu_cookies">Cookies</string>
+    <string name="menu_inspector">Инспектор элемента</string>
+    <string name="menu_js">JS-код</string>
+    <string name="menu_sql">SQL (локально)</string>
+    <string name="menu_proxy">Прокси</string>
+    <string name="menu_theme_light">Светлая тема</string>
+    <string name="menu_theme_dark">Тёмная тема</string>
+    <string name="close">Закрыть</string>
+
+    <!-- Cookies -->
+    <string name="cookies_title">Cookies</string>
+    <string name="cookies_host">Сайт: %1$s</string>
+    <string name="cookie_name">Имя</string>
+    <string name="cookie_value">Значение</string>
+    <string name="cookie_domain">Домен</string>
+    <string name="cookie_httponly">HttpOnly</string>
+    <string name="cookie_secure">Secure</string>
+    <string name="cookie_add_apply">Добавить и применить (4 способа)</string>
+    <string name="cookie_apply">Применить</string>
+    <string name="cookie_delete">Удалить</string>
+    <string name="cookie_section_site">Cookies на сайте (из WebView)</string>
+    <string name="cookie_section_ours">Наши cookies</string>
+    <string name="cookie_log">Журнал применения</string>
+    <string name="cookie_empty_name">Введите имя cookie</string>
+    <string name="cookie_empty_value">Введите значение</string>
+    <string name="cookie_reload">Страница перезагружена с заголовком Cookie</string>
+
+    <!-- Инспектор -->
+    <string name="inspector_title">Элемент</string>
+    <string name="inspector_target">Элемент: %1$s</string>
+    <string name="inspector_pick">Выбрать</string>
+    <string name="inspector_stop">Остановить</string>
+    <string name="inspector_tab_html">HTML</string>
+    <string name="inspector_tab_css">Стили</string>
+    <string name="inspector_apply">Применить</string>
+    <string name="inspector_copy">Копировать</string>
+    <string name="inspector_repick">Выбрать заново</string>
+    <string name="inspector_armed">Инспектор включён — нажмите элемент на странице</string>
+    <string name="inspector_off">Инспектор выключен</string>
+    <string name="inspector_no_target">Элемент не выбран</string>
+    <string name="inspector_applied">Применено</string>
+    <string name="inspector_apply_fail">Не удалось применить: %1$s</string>
+
+    <!-- JS -->
+    <string name="js_title">JS-код</string>
+    <string name="js_hint">JavaScript для текущей страницы…</string>
+    <string name="js_run">Выполнить</string>
+    <string name="js_save">Сохранить</string>
+    <string name="js_websql">Проверить WebSQL</string>
+    <string name="js_result">Результат</string>
+    <string name="js_snippets">Сниппеты</string>
+    <string name="js_auto">Авто</string>
+    <string name="js_save_hint">Имя сниппета</string>
+    <string name="js_saved">Сниппет сохранён</string>
+    <string name="js_empty">Пустой код</string>
+
+    <!-- SQL -->
+    <string name="sql_title">SQL — локальная база</string>
+    <string name="sql_hint">CREATE / INSERT / SELECT…</string>
+    <string name="sql_run">Выполнить</string>
+    <string name="sql_inject">Внедрить результат в страницу</string>
+    <string name="sql_result">Результат</string>
+    <string name="sql_injected">Результат внедрён в страницу как window.__glassSql</string>
+    <string name="sql_select_only">Внедрять можно только SELECT-запрос</string>
+    <string name="sql_note">База хранится в приложении (SQLite). WebSQL-проба — во вкладке JS.</string>
+
+    <!-- Прокси -->
+    <string name="proxy_title">Прокси</string>
+    <string name="proxy_toggle_on">Запустить прокси</string>
+    <string name="proxy_toggle_off">Остановить прокси</string>
+    <string name="proxy_addr">Адрес: %1$s</string>
+    <string name="proxy_copy">Копировать адрес</string>
+    <string name="proxy_copied">Адрес скопирован</string>
+    <string name="proxy_intercept">Встроенный прокси: лог запросов WebView</string>
+    <string name="proxy_log_lan">Журнал LAN-прокси</string>
+    <string name="proxy_log_internal">Журнал WebView</string>
+    <string name="proxy_note">LAN-прокси принимает HTTP-заголовки и добавляет ваши cookies к обычным HTTP-запросам. Для HTTPS — туннель (CONNECT), cookies применяются первыми тремя способами в панели Cookies.</string>
+    <string name="proxy_stopped">Прокси остановлен</string>
+
+    <!-- Общее -->
+    <string name="err_no_webview">Нет подключения</string>
+    <string name="copied">Скопировано</string>
+    <string name="delete">Удалить</string>
+    <string name="run">Запустить</string>
+</resources>

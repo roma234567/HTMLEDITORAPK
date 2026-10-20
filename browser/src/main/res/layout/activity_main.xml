@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Верхняя стеклянная панель -->
+    <LinearLayout
+        android:id="@+id/chromeTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="12dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_omnibox"
+            android:elevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="4dp">
+
+                <ImageView
+                    android:id="@+id/lockIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_lock"
+                    app:tint="@color/ink2"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+                <EditText
+                    android:id="@+id/urlInput"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@null"
+                    android:hint="@string/omnibox_hint"
+                    android:imeOptions="actionGo"
+                    android:importantForAutofill="no"
+                    android:inputType="textUri"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textColor="@color/ink"
+                    android:textColorHint="@color/ink2"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/btnGo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/btn_go"
+                    android:padding="9dp"
+                    android:src="@drawable/ic_go"
+                    app:tint="@color/accent"
+                    xmlns:app="http://schemas.android.com/apk/res-auto" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:indeterminate="false"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/accent" />
+    </LinearLayout>
+
+    <!-- Нижняя стеклянная пилюля -->
+    <LinearLayout
+        android:id="@+id/chromeBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:paddingStart="12dp"
+        android:paddingBottom="12dp"
+        android:paddingEnd="12dp">
+
+        <LinearLayout
+            android:id="@+id/toolbarPill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_pill"
+            android:elevation="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/btn_back"
+                android:padding="11dp"
+                android:src="@drawable/ic_back"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <ImageButton
+                android:id="@+id/btnForward"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/btn_forward"
+                android:padding="11dp"
+                android:src="@drawable/ic_forward"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <ImageButton
+                android:id="@+id/btnReload"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/btn_reload"
+                android:padding="11dp"
+                android:src="@drawable/ic_reload"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/glass_stroke" />
+
+            <ImageButton
+                android:id="@+id/btnMode"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/mode_phone"
+                android:padding="11dp"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <ImageButton
+                android:id="@+id/btnMenu"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/btn_menu"
+                android:padding="11dp"
+                android:src="@drawable/ic_menu"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Тёмная тема: liquid glass -->
+    <color name="bg">#0B0F16</color>
+    <color name="glass">#D9161D2B</color>
+    <color name="glass_field">#E6171E2D</color>
+    <color name="glass_stroke">#33FFFFFF</color>
+    <color name="ink">#E8EDF5</color>
+    <color name="ink2">#8E99AA</color>
+    <color name="accent">#6EA8FF</color>
+    <color name="accent_on">#0B0F16</color>
+    <color name="danger">#E0705F</color>
+    <color name="ok">#5FBF8A</color>
+    <color name="highlight">#336EA8FF</color>
+    <color name="scrim">#66000000</color>
+    <color name="ic_launcher_bg">#161D2B</color>
+</resources>

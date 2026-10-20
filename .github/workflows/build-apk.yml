@@ -60,3 +60,10 @@ jobs:
           name: HtmlEditor-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+
+      - name: Upload Glass Browser artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: GlassBrowser-debug-apk
+          path: browser/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
