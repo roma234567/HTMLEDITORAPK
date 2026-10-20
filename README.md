@@ -1,6 +1,15 @@
-# Html Editor
+# HTMLEDITORAPK
 
-Мобильный HTML-редактор для Android: пишите HTML, CSS и JavaScript и сразу смотрите результат.
+Два приложения в одном репозитории:
+
+- **[Html Editor](#html-editor)** — мобильный HTML-редактор: пишите HTML, CSS и JavaScript и сразу смотрите результат.
+- **[Glass Browser](#glass-browser)** — браузер с прокси, cookies и DevTools-инспектором в стеклянном дизайне.
+
+Оба APK собираются одним прогоном GitHub Actions (артефакты `HtmlEditor-debug-apk` и `GlassBrowser-debug-apk`).
+
+---
+
+# Html Editor
 
 ## Возможности
 
@@ -68,4 +77,73 @@ app/src/main/java/com/htmleditor/app/
 ├── FileStore.kt           — чтение/запись файлов через SAF
 ├── TextDiff.kt            — подсчёт изменившихся символов (условие ≥ 2)
 └── Prefs.kt               — черновик и настройки в SharedPreferences
+```
+
+---
+
+# Glass Browser
+
+Браузер для Android со стеклянным интерфейсом: открывайте сайты по URL, работайте с ними как в Chrome — с cookies, инспектором элементов, JS/SQL и прокси. Модуль `browser/`, приложение `com.glassbrowser.app`.
+
+## Возможности
+
+### Просмотр
+- Плавающий «омнибокс» сверху: URL или поисковый запрос (DuckDuckGo), кнопка перехода, полоса прогресса.
+- Кнопки назад/вперёд/обновить в нижней стеклянной пилюле.
+- **Режим ПК/телефон**: десктопный User-Agent + режим viewport (кнопка в пилюле, переключение с перезагрузкой).
+- Тема: **светлая/тёмная** (меню → переключатель), запоминается; системные бары прозрачные.
+
+### Cookies — 4 способа применения (панель «Cookies»)
+1. `CookieManager.setCookie` + `flush` — основной путь WebView;
+2. `document.cookie` через `evaluateJavascript` — «живое» добавление в DOM (не для HttpOnly);
+3. заголовок `Cookie` при перезагрузке страницы (`loadUrl` с заголовками);
+4. заголовок `Cookie`, вставляемый **LAN-прокси** в обычные HTTP-запросы (домен-матчинг).
+
+Кнопка «Добавить и применить» прогоняет все способа сразу и пишет журнал. Есть списки cookies сайта (с удалением) и своего хранилища, HttpOnly/Secure-флаги.
+
+### Инспектор элемента (как в DevTools Chrome)
+- «Выбрать» → клик по элементу на странице (подсветка ховера, Esc — отмена).
+- CSS-селектор строится как `div#id:nth-of-type(n)`-цепочка (cssPath).
+- Две вкладки: **HTML** (правка outerHTML с применением замены узла) и **Стили** (правка inline-стилей через CSSOM `setProperty`).
+- Обратная связь — через `prompt`-мост `__GLASS__` (JS полностью в Kotlin, без внешних скриптов).
+
+### JS и SQL
+- **JS-консоль**: выполнение кода на странице (результат/ошибки), сниппеты с сохранением и флагом «Авто» (запускаются после загрузки каждой страницы).
+- **Проба WebSQL**: кнопка проверяет доступность `openDatabase` в WebView.
+- **SQL локально**: консоль к SQLite приложения (CREATE/INSERT/SELECT…), таблица результата, кнопка **«Внедрить результат в страницу»** — SELECT превращается в `window.__glassSql = {columns, rows}` на текущей странице.
+
+### Прокси (два уровня)
+- **Перехватчик WebView** (`shouldInterceptRequest`): журнал всех HTTP-запросов с эхо cookies (тумблер в панели прокси).
+- **Реальный LAN-прокси** (`ServerSocket` на `0.0.0.0:8888`, запасные порты): обычные HTTP-запросы форвардятся с подстановкой ваших cookies, HTTPS — через CONNECT-туннель. Адрес копируется для настройки внешних устройств; журнал LAN отдельно от журнала WebView.
+
+## Дизайн
+
+Своя тема «liquid glass» (не наследует палитру Html Editor): полупрозрачные панели с волосяной обводкой, тени/elevation, нижние листы со скруглением28dp и blur-behind на Android 12+, свои stroke-иконки24dp, адаптивная иконка. Светлая и тёмная версии цветов, анимации появления листов.
+
+## Технологии
+
+- Kotlin + XML (View), зависимости только `core-ktx` + `appcompat`
+- `compileSdk`/`targetSdk` — **36**, `minSdk` — **24**
+- Разрешения: `INTERNET`, `ACCESS_NETWORK_STATE`, `ACCESS_WIFI_STATE` (для прокси и LAN-адреса)
+- WebView (JavaScript, DOM storage), SQLite, ServerSocket
+
+## Сборка
+
+```bash
+./gradlew :browser:assembleDebug   # APK: browser/build/outputs/apk/debug/browser-debug.apk
+```
+
+Или заберите готовый **GlassBrowser-debug-apk** из артефактов GitHub Actions того же прогона, что и Html Editor.
+
+## Структура модуля
+
+```
+browser/src/main/java/com/glassbrowser/app/
+├── MainActivity.kt        — WebView, omnibox, режим ПК, тема, prompt-мост
+├── CookieStore.kt         — хранилище cookies + 4 способа применения
+├── InspectorBridge.kt     — JS инспектора в Kotlin (cssPath, выбор, правка HTML/CSS)
+├── ProxyServer.kt         — LAN HTTP-прокси (CONNECT + подстановка Cookie)
+├── SqlStore.kt            — локальный SQLite + JSON для внедрения в страницу
+├── PrefsX.kt, LogHub.kt   — настройки/сниппеты и журналы
+├── BaseSheet.kt + Sheet*  — нижние листы (меню, cookies, инспектор, JS, SQL, прокси)
 ```
