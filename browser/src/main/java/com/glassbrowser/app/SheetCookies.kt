@@ -53,6 +53,8 @@ class SheetCookies(
         rebuildOurList()
     }
 
+    private fun getString(res: Int): String = activity.getString(res)
+
     private fun getString(res: Int, arg: String): String =
         activity.getString(res, arg)
 

@@ -13,7 +13,7 @@ import androidx.annotation.LayoutRes
  * База нижних листов: Dialog снизу, стеклянный фон, blur-behind (API 31+).
  */
 abstract class BaseSheet(
-    private val activity: MainActivity,
+    val activity: MainActivity,
     @LayoutRes private val layoutId: Int
 ) {
 

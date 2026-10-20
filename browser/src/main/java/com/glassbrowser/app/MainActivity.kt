@@ -15,6 +15,7 @@ import android.webkit.JsPromptResult
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -225,7 +226,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceRequest? {
+            override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
                 if (PrefsX.interceptOn && request != null) {
                     val u = request.url
                     val scheme = u.scheme?.lowercase()
@@ -268,6 +269,7 @@ class MainActivity : AppCompatActivity() {
                 view: WebView?,
                 url: String?,
                 message: String?,
+                defaultValue: String?,
                 resultMsg: JsPromptResult?
             ): Boolean {
                 if (message != null && resultMsg != null &&
@@ -276,7 +278,7 @@ class MainActivity : AppCompatActivity() {
                     resultMsg.confirm("")
                     return true
                 }
-                return super.onJsPrompt(view, url, message, resultMsg)
+                return super.onJsPrompt(view, url, message, defaultValue, resultMsg)
             }
         }
     }
